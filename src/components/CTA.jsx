@@ -11,27 +11,27 @@ const CTA = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log('Form submitted:', formData);
-    const { name, email, message } = formData;
+    // const { name, email, message } = formData;
   
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name, email, message }),
-      });
+    // try {
+    //   const res = await fetch('/api/contact', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({ name, email, message }),
+    //   });
 
-      if (res.ok) {
-        alert('Message sent successfully!');
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        alert('Failed to send message');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      alert('Something went wrong');
-    }
+    //   if (res.ok) {
+    //     alert('Message sent successfully!');
+    //     setFormData({ name: '', email: '', message: '' });
+    //   } else {
+    //     alert('Failed to send message');
+    //   }
+    // } catch (error) {
+    //   console.error('Error:', error);
+    //   alert('Something went wrong');
+    // }
   };
 
   const handleChange = (e) => {
