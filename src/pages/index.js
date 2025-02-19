@@ -14,14 +14,11 @@ export default function Home() {
     <>
     <Navbar/>
     <Hero/>
-    <Services/>
     <About/>
     <StickyScrollRevealDemo/>
+    <Services/>
     <CTA/>
     <Footer/>
-
-    
-    
     </>
   );
 }

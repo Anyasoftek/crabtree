@@ -248,7 +248,7 @@ const cards = [
   },
   {
  
-    title: "Proffesonal services",
+    title: "Professional Services",
     src: services,
    
     content: () => {

@@ -117,7 +117,7 @@ const Hero = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1 }}
-          className="text-5xl md:text-6xl font-extrabold text-white "
+          className="text-5xl md:text-6xl font-extrabold text-white"
         >
           Empowering Your <span className="text-5xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-700">IT Solutions</span> 
         </motion.h1>
@@ -136,6 +136,7 @@ const Hero = () => {
           className="mt-6 flex flex-wrap justify-center gap-4"
         >
           <motion.button
+            onClick={() => document.getElementById("contact-section").scrollIntoView({ behavior: "smooth" })}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 rounded-lg font-medium shadow-lg shadow-blue-500/25"
@@ -143,9 +144,10 @@ const Hero = () => {
             Contact Us
           </motion.button>
           <motion.button
+            onClick={() => document.getElementById("about").scrollIntoView({ behavior: "smooth" })}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-6 py-3 border border-blue-500/50 hover:bg-blue-500/10 rounded-lg font-medium backdrop-blur-sm"
+            className="px-6 py-3 border bg-white text-blue-600 hover:bg-blue-500/10 rounded-lg font-medium backdrop-blur-sm"
           >
             Learn More
           </motion.button>

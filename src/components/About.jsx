@@ -58,7 +58,7 @@ const AboutUs = () => {
   const scale = 1 + scrollPosition * 0.0005;
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-black text-white">
+    <section id="about" className="relative min-h-screen overflow-hidden bg-black text-white">
       {/* Particles Background */}
       <div className="absolute top-0 left-0 w-full h-full z-0">
         <Canvas>

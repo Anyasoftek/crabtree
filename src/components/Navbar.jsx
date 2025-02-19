@@ -60,14 +60,14 @@ const Navbar = () => {
           {/* Desktop Navigation Links */}
           <div className="hidden md:flex font-bold text-lg items-center gap-20">
             <motion.a
-              href="#home"
+              onClick={() => document.getElementById("home").scrollIntoView({ behavior: "smooth" })}
               whileHover={{ scale: 1.1 }}
               className="hover:text-gray-300 transition-colors"
             >
               Home
             </motion.a>
             <motion.a
-              href="#about"
+              onClick={() => document.getElementById("about").scrollIntoView({ behavior: "smooth" })}
               whileHover={{ scale: 1.1 }}
               className="hover:text-gray-300 transition-colors"
             >
@@ -95,7 +95,7 @@ const Navbar = () => {
               {/* Dropdown animation */}
               {isServicesOpen && (
                 <motion.div
-                  className="absolute z-10 top-full left-0 mt-2 w-48 bg-black bg-opacity-95 rounded-md shadow-lg py-2"
+                  className="absolute z-20 top-full left-0 mt-2 w-48 bg-black bg-opacity-95 rounded-md shadow-lg py-2"
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
@@ -104,7 +104,7 @@ const Navbar = () => {
                   {services.map((service, index) => (
                     <motion.a
                       key={index}
-                      href="#services"
+                      onClick={() => document.getElementById("services").scrollIntoView({ behavior: "smooth" })}
                       className="block px-4 py-2 hover:bg-white hover:text-black transition-colors"
                       whileHover={{ scale: 1.05 }}
                     >
@@ -116,7 +116,7 @@ const Navbar = () => {
             </div>
 
             <motion.a
-              href="#contact-section"
+              onClick={() => document.getElementById("contact-section").scrollIntoView({ behavior: "smooth" })}
               whileHover={{ scale: 1.1 }}
               className="hover:text-gray-300 transition-colors"
             >

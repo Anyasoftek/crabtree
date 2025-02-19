@@ -38,6 +38,7 @@ export default {
     },
   },
   plugins: [
+    require('tailwind-scrollbar-hide'),
     addVariablesForColors,
     function ({ matchUtilities, theme }) {
       matchUtilities(
