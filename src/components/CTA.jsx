@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import emailjs from '@emailjs/browser'
 
 const CTA = () => {
   const [formData, setFormData] = useState({
@@ -8,30 +8,35 @@ const CTA = () => {
     message: ''
   });
 
+  const [status, setStatus] = useState(""); // To display success or error messages
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log('Form submitted:', formData);
-    // const { name, email, message } = formData;
-  
-    // try {
-    //   const res = await fetch('/api/contact', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({ name, email, message }),
-    //   });
+    // console.log("Service ID:", process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID);
+    // console.log("Template ID:", process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID);
+    // console.log("Public Key:", process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
 
-    //   if (res.ok) {
-    //     alert('Message sent successfully!');
-    //     setFormData({ name: '', email: '', message: '' });
-    //   } else {
-    //     alert('Failed to send message');
-    //   }
-    // } catch (error) {
-    //   console.error('Error:', error);
-    //   alert('Something went wrong');
-    // }
+    const templateParams = {
+      to_name: "Your Name or Receiver Name", // If needed, replace with actual recipient's name
+      from_name: formData.name, // Sender's name
+      from_email: formData.email, // Sender's email
+      message: formData.message, // User's message
+    };
+
+    try {
+      const res = await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      );
+
+      console.log("Email sent successfully:", res);
+      alert("Message sent successfully!");
+    } catch (error) {
+      console.error("Error sending email:", error);
+      alert("Failed to send message. Please try again.");
+    }
   };
 
   const handleChange = (e) => {
