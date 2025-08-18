@@ -7,18 +7,22 @@ import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import Services from "@/components/Services";
 import { StickyScrollRevealDemo } from "@/components/Sticky";
+import Products from "@/components/Products";
+import Vapt from "@/components/Vapt";
 
 
 export default function Home() {
   return (
     <>
-    <Navbar/>
-    <Hero/>
-    <Services/>
-    <About/>
-    <StickyScrollRevealDemo/>
-    <CTA/>
-    <Footer/>
+    <Navbar />
+    <Hero />
+    <Products />
+    <Services />
+    <Vapt />
+    <About />
+    <StickyScrollRevealDemo />
+    <CTA />
+    <Footer />
 
     
     

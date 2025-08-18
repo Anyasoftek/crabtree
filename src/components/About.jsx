@@ -1,89 +1,32 @@
-import { Canvas, useFrame } from "@react-three/fiber";
-import { motion } from "framer-motion";
-import { useRef, useMemo, useState, useEffect } from "react";
-import * as THREE from "three";
-
-const Particles = () => {
-  const particlesRef = useRef();
-
-  // Create particles
-  const particles = useMemo(() => {
-    const positions = [];
-    for (let i = 0; i < 500; i++) {
-      positions.push((Math.random() - 0.5) * 10); // X
-      positions.push((Math.random() - 0.5) * 10); // Y
-      positions.push((Math.random() - 0.5) * 20); // Z
-    }
-    return new Float32Array(positions);
-  }, []);
-
-  // Rotate particles
-  useFrame(() => {
-    if (particlesRef.current) {
-      particlesRef.current.rotation.y += 0.001; // Slow rotation
-    }
-  });
-
-  return (
-    <points ref={particlesRef}>
-      <bufferGeometry>
-        <bufferAttribute
-          attach="attributes-position"
-          array={particles}
-          itemSize={3}
-          count={particles.length / 3}
-        />
-      </bufferGeometry>
-      <pointsMaterial color="#FFFFFF" size={0.05} />
-    </points>
-  );
-};
+import React from "react";
 
 const AboutUs = () => {
-  const [scrollPosition, setScrollPosition] = useState(0);
-
-  // Capture scroll position
-  const handleScroll = () => {
-    setScrollPosition(window.scrollY);
-  };
-
-  // Add event listener for scroll
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // 3D transformation values based on scroll position
-  const rotation = (scrollPosition * 0.01) % 360;
-  const scale = 1 + scrollPosition * 0.0005;
-
   return (
-    <section className="relative min-h-screen overflow-hidden bg-black text-white">
-      {/* Particles Background */}
-      <div className="absolute top-0 left-0 w-full h-full z-0">
-        <Canvas>
-          <ambientLight intensity={0.5} />
-          <Particles />
-        </Canvas>
+    <section id="about" className="bg-white">
+      <div className="max-w-7xl mx-auto px-4 py-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+        <div>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-blue-900">About Crabtree</h2>
+          <p className="mt-4 text-gray-600 leading-7">We partner with organizations to design, implement, and manage secure IT environments. Our team blends deep expertise with a pragmatic approach to deliver measurable outcomes.</p>
+          <ul className="mt-6 space-y-2 text-gray-700 text-sm">
+            <li>• 10+ years delivering enterprise and SMB solutions</li>
+            <li>• Certified across leading vendors and cloud platforms</li>
+            <li>• Clear engagement model with documented handover</li>
+          </ul>
+        </div>
+        <div className="rounded-lg border border-gray-200 bg-gray-50 p-6">
+          <h3 className="text-lg font-semibold text-gray-900">Testimonials</h3>
+          <div className="mt-4 grid gap-4">
+            <blockquote className="rounded-md bg-white p-4 shadow-sm border border-gray-200">
+              <p className="text-sm text-gray-700">“Professional, responsive, and security-focused. They modernized our network with zero downtime.”</p>
+              <footer className="mt-2 text-xs text-gray-500">CTO, Manufacturing</footer>
+            </blockquote>
+            <blockquote className="rounded-md bg-white p-4 shadow-sm border border-gray-200">
+              <p className="text-sm text-gray-700">“Their managed services gave us predictable costs and faster response times.”</p>
+              <footer className="mt-2 text-xs text-gray-500">COO, Healthcare</footer>
+            </blockquote>
+          </div>
+        </div>
       </div>
-
-      {/* About Us Content with 3D Scroll Effect */}
-      <motion.div
-        style={{
-          transform: `perspective(1000px) rotateX(${rotation}deg) scale(${scale})`,
-          transformStyle: "preserve-3d",
-        }}
-        className="mx-auto text-center items-center justify-center z-10 flex flex-col min-h-screen"
-      >
-        <span className="text-sm md:text-4xl lg:text-5xl font-normal">
-          We help you to
-        </span>
-        <p className="md:mt-4 mt-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-700 text-[8px] tracking wider md:text-4xl lg:text-4xl font-bold text-center justify-center items-center max-w-2xl">
-          Plan, Migrate, Implement, Manage
-          <br />
-          and Scale IT Infrastructure
-        </p>
-      </motion.div>
     </section>
   );
 };
